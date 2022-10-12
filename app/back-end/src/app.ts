@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as cors from "cors";
 import errorMiddleware from "./middlewares/middlewareError";
 import Routes from "./routes";
 
@@ -26,8 +27,14 @@ class App {
       next();
     };
 
+    // this.app.use(accessControl);
     this.app.use(express.json());
-    this.app.use(accessControl);
+    this.app.use(cors({
+      origin: "*",
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      preflightContinue: false,
+      optionsSuccessStatus: 204
+    }))
   }
 
   public start(PORT: string | number): void {
