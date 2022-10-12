@@ -29,6 +29,8 @@ services:
     build: ./front-end
     ports:
       - 3000:3000
+    environment:
+      - REACT_APP_HOST=http://34.195.58.149:3001
 
   db:
     container_name: "mysql_db"

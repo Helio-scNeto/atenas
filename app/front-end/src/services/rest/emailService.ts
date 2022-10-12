@@ -2,7 +2,7 @@ import axios from "axios";
 import { IFormulario } from "../../interfaces/IFormulario";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: process.env.REACT_APP_HOST,
 });
 
 export const getEmails = async () => {
